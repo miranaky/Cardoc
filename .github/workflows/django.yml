@@ -36,6 +36,7 @@ jobs:
         uses: pre-commit/action@v2.0.3
 
       - name: Run Tests
-        env: DJANGO_SECRET_KEY=a4+-6ld_4l2-fig_6j4ecr8xtxkf6y@9p%569ejaid**0
+        env: 
+          DJANGO_SECRET_KEY: a4+-6ld_4l2-fig_6j4ecr8xtxkf6y@9p%569ejaid**0
         run: |
           pytest
