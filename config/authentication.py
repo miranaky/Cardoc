@@ -18,3 +18,6 @@ class JWTAuthentication(authentication.BaseAuthentication):
             return (user, None)
         except (ValueError, jwt.exceptions.DecodeError, User.DoesNotExist):
             return None
+
+    def authenticate_header(self, request):
+        return "Token"
