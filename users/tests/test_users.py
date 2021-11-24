@@ -42,7 +42,7 @@ class TestUserViews(APITestCase):
             }
         )
         res = self.client.post(url, new_user_data, content_type="application/json")
-        assert res.status_code == status.HTTP_201_CREATED
+        assert res.status_code == status.HTTP_200_OK
         assert res.data.get("access_token") is not None
 
     def test_login_account(self):
