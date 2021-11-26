@@ -1,0 +1,28 @@
+version: "3"
+
+volumes:
+  app:
+
+services:
+  web:
+    container_name: web
+    restart: always
+    env_file:
+      - .envs
+    build:
+      dockerfile: Dockerfile.prod
+    command: sh -c "python manage.py migrate && gunicorn config.wsgi:application --bind 0.0.0.0:8000"
+    ports:
+      - "8000:8000"
+    volumes: # 파일 시스템 정의
+      - .:/app
+
+  nginx:
+    image: nginx
+    container_name: nginx
+    ports:
+      - "80:80/tcp"
+    volumes:
+      - ./deploy/nginx:/etc/nginx/conf.d
+    depends_on:
+      - web
