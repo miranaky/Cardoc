@@ -4,6 +4,8 @@ services:
   web:
     container_name: web
     restart: always
+    env_file:
+      - .envs
     environment:
       - DJANGO_SECRET_KEY=prod
     build:
