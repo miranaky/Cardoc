@@ -24,4 +24,4 @@ then
 fi
 
 echo "start docker-compose up: ubuntu"
-sudo docker-compose -f /home/ubuntu/src/CarDoc/docker-compose.prod.yml up --build -d
+sudo docker-compose -f /home/ubuntu/src/cardoc/docker-compose.prod.yml up --build -d
