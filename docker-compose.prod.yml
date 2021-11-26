@@ -10,6 +10,7 @@ services:
     env_file:
       - .envs
     build:
+      context: ./
       dockerfile: Dockerfile.prod
     command: sh -c "python manage.py migrate && gunicorn config.wsgi:application --bind 0.0.0.0:8000"
     ports:

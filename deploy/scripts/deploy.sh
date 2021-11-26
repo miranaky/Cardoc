@@ -16,11 +16,17 @@ then
 fi
 
 # Installing docker-compose if not exists
-if !type docker-compose > /dev/null
+if ! type docker-compose > /dev/null
 then
   echo "docker-compose does not exist"
   echo "Start installing docker-compose"
   sudo apt-get install docker-compose -y
+fi
+
+# To create the docker group and add your user:
+groups|grep docker > /dev/null
+if [ $? -eq 0 ];then
+  sudo usermod -aG docker $USER
 fi
 
 echo "start docker-compose up: ubuntu"
