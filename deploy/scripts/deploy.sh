@@ -23,5 +23,11 @@ then
   sudo apt-get install docker-compose -y
 fi
 
+# To create the docker group and add your user:
+groups|grep docker > /dev/null
+if [ $? -eq 0 ];then
+  sudo usermod -aG docker $USER
+fi
+
 echo "start docker-compose up: ubuntu"
 sudo docker-compose -f /home/ubuntu/src/cardoc/docker-compose.prod.yml up --build -d
