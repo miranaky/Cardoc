@@ -41,3 +41,4 @@ jobs:
           DJANGO_ALLOWED_HOSTS: ${{ secrets.DJANGO_ALLOWED_HOSTS }}
         run: |
           pytest
+
