@@ -36,6 +36,8 @@ http://ec2-15-164-95-164.ap-northeast-2.compute.amazonaws.com
 
 ## 구현 기능
 
+<br>
+
 ### 1. 서버 구조
 
 배포된 서버의 구조는 다음과 같다.
@@ -45,7 +47,9 @@ http://ec2-15-164-95-164.ap-northeast-2.compute.amazonaws.com
 <br>
 
 클라이언트의 요청이 들어오면 Nginx, Gunicorn, Django 순으로 처리가 된다.
-자동차 타이어 정보 저장 요청이 들어오면 자동차 차종ID를 갖고 자동차 정보 조회 API Server에 요청하여 타이어 정보를 얻는다. 이후 Database에 Column별로 저장한다.
+자동차 타이어 정보 저장 요청이 들어오면 자동차 차종ID를 갖고 자동차 정보 조회 API Server에 요청하여 타이어 정보를 얻는다. 이후 Database에 정보를 Column별로 저장한다.
+
+<br>
 
 ### 2. 사용자 생성 및 로그인 API
 
@@ -61,6 +65,8 @@ http://ec2-15-164-95-164.ap-northeast-2.compute.amazonaws.com
 
     계정이 있는 사용자만 아래 API 이용 가능
 
+<br>
+
 ### 3. 사용자가 소유한 타이어 정보를 저장하는 API
 
     # 자동차 타이어 정보 저장
@@ -75,6 +81,8 @@ http://ec2-15-164-95-164.ap-northeast-2.compute.amazonaws.com
     Status Code 401 : 로그인 한 사용자만 정보를 저장할 수 있다.
     Status Code 500 : 자동차 정보 조회 API 에서 정보를 찾지 못하는 경우.
 
+<br>
+
 ### 4. 사용자가 소유한 타이어 정보 조회 API
 
     # 자동차 타이어 정보 조회
@@ -85,8 +93,11 @@ http://ec2-15-164-95-164.ap-northeast-2.compute.amazonaws.com
     Status Code 404 : 사용자 아이디가 없는 경우
 
 <br>
+<br>
 
 ## 설치 및 실행 방법
+
+<br>
 
 ### Local 개발 및 테스트용
 
@@ -111,10 +122,13 @@ $ export DJANGO_ALLOWED_HOSTS="localhost testserver"
 $ python manage.py runserver
 ```
 
+<br>
+
 ### 배포 방법
 
 Github에 develop,main 브런치로 push 되면 Github Action을 통하여 테스트 후 AWS EC2에 docker-compose로 자동 배포.
 
+<br>
 <br>
 
 # Reference
